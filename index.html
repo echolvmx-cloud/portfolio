@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>吕美秀 · 市场负责人</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap');
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f4f0;
+    --g1: #1a1a1a;
+    --g2: #2e2e2e;
+    --g3: #6b6b6b;
+    --g4: #c8c8c8;
+    --g5: #ebebeb;
+    --serif: 'Noto Serif SC', serif;
+    --sans: 'Noto Sans SC', sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--white); color:var(--black); font-family:var(--sans); font-weight:300; line-height:1.7; overflow-x:hidden; }
+
+  nav {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:20px 48px;
+    background:rgba(245,244,240,0.93);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--g5);
+  }
+  .nav-logo { font-family:var(--serif); font-size:18px; font-weight:700; letter-spacing:0.05em; color:var(--black); text-decoration:none; }
+  .nav-links { display:flex; gap:36px; list-style:none; }
+  .nav-links a { font-size:13px; letter-spacing:0.12em; color:var(--g3); text-decoration:none; text-transform:uppercase; transition:color 0.2s; }
+  .nav-links a:hover { color:var(--black); }
+
+  section { min-height:100vh; padding:120px 48px 80px; display:flex; flex-direction:column; justify-content:center; }
+  .section-label { font-size:11px; letter-spacing:0.25em; text-transform:uppercase; color:var(--g3); margin-bottom:24px; }
+
+  /* HERO */
+  #home { position:relative; overflow:hidden; }
+  .hero-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; max-width:1100px; }
+  .hero-eyebrow { font-size:11px; letter-spacing:0.3em; text-transform:uppercase; color:var(--g3); margin-bottom:20px; }
+  .hero-name { font-family:var(--serif); font-size:clamp(52px,6vw,88px); font-weight:700; line-height:1.05; letter-spacing:-0.02em; margin-bottom:28px; }
+  .hero-tagline { font-size:16px; color:var(--g3); line-height:1.9; margin-bottom:40px; max-width:400px; }
+  .hero-tagline strong { color:var(--black); font-weight:500; }
+  .hero-cta { display:inline-flex; align-items:center; gap:12px; background:var(--black); color:var(--white); padding:14px 28px; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; transition:background 0.2s; font-family:var(--sans); }
+  .hero-cta:hover { background:var(--g2); }
+  .hero-stats { display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--g5); }
+  .stat-item { background:var(--white); padding:32px 28px; }
+  .stat-number { font-family:var(--serif); font-size:36px; font-weight:700; letter-spacing:-0.02em; line-height:1; margin-bottom:8px; }
+  .stat-label { font-size:12px; color:var(--g3); line-height:1.5; }
+  .hero-bg { position:absolute; right:-20px; bottom:40px; font-family:var(--serif); font-size:180px; font-weight:700; color:var(--g5); line-height:1; pointer-events:none; user-select:none; z-index:-1; }
+
+  /* CASES */
+  #cases { background:var(--black); color:var(--white); }
+  #cases .section-label { color:var(--g3); }
+  .cases-title { font-family:var(--serif); font-size:clamp(32px,4vw,52px); font-weight:600; margin-bottom:64px; max-width:600px; line-height:1.2; }
+  .case-list { display:flex; flex-direction:column; max-width:1000px; }
+  .case-item { display:grid; grid-template-columns:48px 1fr 180px; gap:32px; align-items:start; padding:36px 0; border-top:1px solid var(--g2); }
+  .case-item:last-child { border-bottom:1px solid var(--g2); }
+  .case-num { font-size:12px; color:var(--g3); letter-spacing:0.1em; margin-top:6px; }
+  .case-company { font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:var(--g3); margin-bottom:8px; }
+  .case-title { font-family:var(--serif); font-size:22px; font-weight:600; margin-bottom:12px; line-height:1.3; }
+  .case-desc { font-size:14px; color:var(--g4); line-height:1.8; }
+  .case-metrics { display:flex; flex-direction:column; gap:16px; align-items:flex-end; }
+  .metric { text-align:right; }
+  .metric-value { font-family:var(--serif); font-size:22px; font-weight:700; color:var(--white); line-height:1; }
+  .metric-desc { font-size:11px; color:var(--g3); }
+
+  /* METHOD */
+  #method { background:var(--white); }
+  .method-title { font-family:var(--serif); font-size:clamp(32px,4vw,52px); font-weight:600; margin-bottom:64px; max-width:600px; line-height:1.2; }
+  .method-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:var(--g5); max-width:1000px; }
+  .method-card { background:var(--white); padding:40px 32px; }
+  .method-line { width:36px; height:2px; background:var(--black); margin-bottom:28px; }
+  .method-card-title { font-family:var(--serif); font-size:20px; font-weight:600; margin-bottom:16px; line-height:1.3; }
+  .method-card-desc { font-size:13px; color:var(--g3); line-height:1.8; }
+  .method-tags { margin-top:20px; display:flex; flex-wrap:wrap; gap:8px; }
+  .tag { font-size:11px; letter-spacing:0.08em; padding:4px 10px; border:1px solid var(--g4); color:var(--g3); }
+
+  /* ABOUT */
+  #about { background:var(--g1); color:var(--white); }
+  #about .section-label { color:var(--g3); }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; max-width:1000px; }
+  .about-title { font-family:var(--serif); font-size:clamp(28px,3vw,44px); font-weight:600; line-height:1.2; margin-bottom:28px; }
+  .about-bio { font-size:15px; color:var(--g4); line-height:1.9; }
+  .timeline { display:flex; flex-direction:column; }
+  .tl-item { display:grid; grid-template-columns:80px 1fr; gap:24px; padding:20px 0; border-top:1px solid var(--g2); }
+  .tl-item:last-child { border-bottom:1px solid var(--g2); }
+  .tl-year { font-size:11px; color:var(--g3); padding-top:2px; }
+  .tl-role { font-size:14px; font-weight:500; margin-bottom:2px; }
+  .tl-company { font-size:12px; color:var(--g3); }
+
+  /* CONTACT */
+  #contact { min-height:auto; padding:100px 48px; }
+  .contact-inner { max-width:700px; }
+  .contact-title { font-family:var(--serif); font-size:clamp(36px,5vw,68px); font-weight:700; line-height:1.1; letter-spacing:-0.02em; margin-bottom:40px; }
+  .contact-title span { color:var(--g4); }
+  .contact-links { display:flex; flex-direction:column; }
+  .contact-link { display:flex; justify-content:space-between; align-items:center; padding:20px 0; border-top:1px solid var(--g5); text-decoration:none; color:var(--black); font-size:16px; transition:padding-left 0.25s; }
+  .contact-link:last-child { border-bottom:1px solid var(--g5); }
+  .contact-link:hover { padding-left:12px; }
+  .cl-label { font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--g3); min-width:48px; }
+
+  footer { padding:24px 48px; border-top:1px solid var(--g5); display:flex; justify-content:space-between; align-items:center; }
+  .f-name { font-family:var(--serif); font-size:14px; color:var(--g3); }
+  .f-copy { font-size:12px; color:var(--g4); }
+
+  .fi { opacity:0; transform:translateY(24px); transition:opacity 0.7s ease, transform 0.7s ease; }
+  .fi.vis { opacity:1; transform:translateY(0); }
+  .d1 { transition-delay:0.1s; } .d2 { transition-delay:0.2s; } .d3 { transition-delay:0.3s; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#home" class="nav-logo">吕美秀</a>
+  <ul class="nav-links">
+    <li><a href="#cases">案例</a></li>
+    <li><a href="#method">我的打法</a></li>
+    <li><a href="#about">关于我</a></li>
+    <li><a href="#contact">联系我</a></li>
+  </ul>
+</nav>
+
+<section id="home">
+  <div class="hero-bg">市场</div>
+  <div class="hero-grid">
+    <div>
+      <p class="hero-eyebrow fi">To B 市场负责人 · AI 基础设施赛道</p>
+      <h1 class="hero-name fi d1">Echo</h1>
+      <p class="hero-tagline fi d2">6年科技 To B 经验，专注 <strong>AI 基础设施与开源生态</strong>。<br>技术出身，懂产品，能从 0 搭建增长体系，<br>用数据说话。</p>
+      <a href="#cases" class="hero-cta fi d3">查看案例 →</a>
+    </div>
+    <div class="hero-stats fi d2">
+      <div class="stat-item">
+        <div class="stat-number">5万+</div>
+        <div class="stat-label">从0搭建注册开发者</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">150%</div>
+        <div class="stat-label">MQL 提升 · CAC ↓32%</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">1:4+</div>
+        <div class="stat-label">投放 ROI · 有效线索+35%</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">10万+</div>
+        <div class="stat-label">社区月活 · 付费线索贡献35%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cases">
+  <p class="section-label fi">Selected Work</p>
+  <h2 class="cases-title fi d1">做过什么，<br>结果如何。</h2>
+  <div class="case-list">
+    <div class="case-item fi">
+      <span class="case-num">01</span>
+      <div>
+        <p class="case-company">OpenCSG · 2023—2025</p>
+        <h3 class="case-title">从0搭建开发者社区与增长体系</h3>
+        <p class="case-desc">制定「开源+社区+生态」To B 市场战略，打造中国版 Hugging Face 定位。构建开发者成长体系：线上技术答疑、开源贡献激励、视频直播。通过 SEO/技术社区/内容多渠道获客，将百度指数从0拉升至日均300+，内容被36氪、第一财经、量子位等30+头部媒体报道。</p>
+      </div>
+      <div class="case-metrics">
+        <div class="metric"><div class="metric-value">5万+</div><div class="metric-desc">注册开发者</div></div>
+        <div class="metric"><div class="metric-value">MAU 10万+</div><div class="metric-desc">社区月活</div></div>
+        <div class="metric"><div class="metric-value">MQL +150%</div><div class="metric-desc">CAC 下降32%</div></div>
+      </div>
+    </div>
+    <div class="case-item fi d1">
+      <span class="case-num">02</span>
+      <div>
+        <p class="case-company">云工场 · 2025—至今</p>
+        <h3 class="case-title">算力产品商业化增长</h3>
+        <p class="case-desc">负责灵境云商业化路径优化（获客→试用→消纳→复购）。构建 SEM + GEO 多渠道获客体系，围绕豆包、DeepSeek 核心关键词场景化布局。搭建市场→销售→成交可视化漏斗，建立 MQL/SQL 分级与2小时响应 SLA，驱动线上算力营收从0到百万级。</p>
+      </div>
+      <div class="case-metrics">
+        <div class="metric"><div class="metric-value">0→百万</div><div class="metric-desc">线上算力营收</div></div>
+        <div class="metric"><div class="metric-value">ROI 1:4+</div><div class="metric-desc">投放回报</div></div>
+        <div class="metric"><div class="metric-value">-25%</div><div class="metric-desc">整体转化周期</div></div>
+      </div>
+    </div>
+    <div class="case-item fi d2">
+      <span class="case-num">03</span>
+      <div>
+        <p class="case-company">桥田智能 · 2023</p>
+        <h3 class="case-title">工业机器人品牌重塑与 GTM</h3>
+        <p class="case-desc">推动品牌从「设备供应商」升级为「工业机器人末端应用设备解决方案提供商」，统一品牌形象与官网内容。策划执行 AMTS 展会与机器人产业大会，现场采集线索500+，直接转化金额数百万。SEO/SEM 驱动官网月均线索稳步增长。</p>
+      </div>
+      <div class="case-metrics">
+        <div class="metric"><div class="metric-value">500+</div><div class="metric-desc">展会线索</div></div>
+        <div class="metric"><div class="metric-value">+50%</div><div class="metric-desc">官网月均线索</div></div>
+        <div class="metric"><div class="metric-value">MQL +40%</div><div class="metric-desc">数字营销增长</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="method">
+  <p class="section-label fi">My Approach</p>
+  <h2 class="method-title fi d1">方法论不是框架，<br>是反复验证的打法。</h2>
+  <div class="method-grid">
+    <div class="method-card fi">
+      <div class="method-line"></div>
+      <h3 class="method-card-title">开发者增长体系</h3>
+      <p class="method-card-desc">从获取到留存到贡献，分层设计开发者成长路径。Issue/PR/Release 贡献激励机制驱动社区从用户向贡献者转化，形成生态协同飞轮。</p>
+      <div class="method-tags"><span class="tag">社区运营</span><span class="tag">开源生态</span><span class="tag">开发者关系</span></div>
+    </div>
+    <div class="method-card fi d1">
+      <div class="method-line"></div>
+      <h3 class="method-card-title">To B 线索转化链路</h3>
+      <p class="method-card-desc">市场→销售→成交可视化漏斗，MQL/SQL 分级，2小时响应 SLA，周度复盘。让每条线索有据可查、有人跟进、有结果可量。</p>
+      <div class="method-tags"><span class="tag">漏斗管理</span><span class="tag">SEM / GEO</span><span class="tag">销售协同</span></div>
+    </div>
+    <div class="method-card fi d2">
+      <div class="method-line"></div>
+      <h3 class="method-card-title">AI 驱动的工作方式</h3>
+      <p class="method-card-desc">具备 Vibe Coding 能力，可快速搭建原型验证想法。将 AI 工具融入内容生产、竞品分析、数据洞察全流程，大幅缩短从想法到执行的周期。</p>
+      <div class="method-tags"><span class="tag">Vibe Coding</span><span class="tag">AI 工作流</span><span class="tag">快速验证</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <p class="section-label fi">About</p>
+  <div class="about-grid">
+    <div>
+      <h2 class="about-title fi d1">技术出身的<br>市场人。</h2>
+      <p class="about-bio fi d2">网络工程专业毕业，做过技术支持，转型市场6年。技术背景让我能真正看懂产品、跟研发对话、把复杂的 AI 基础设施场景转化为客户听得懂的语言。<br><br>专注 To B 科技赛道，覆盖大模型平台、算力基础设施与开发者社区运营。既能从0搭建增长体系，也能精细化优化转化漏斗。相信数字是最好的语言。</p>
+    </div>
+    <div class="timeline fi d2">
+      <div class="tl-item"><span class="tl-year">2025—</span><div><p class="tl-role">市场部经理</p><p class="tl-company">江苏云工场（边缘云第一股）</p></div></div>
+      <div class="tl-item"><span class="tl-year">2023—25</span><div><p class="tl-role">市场负责人</p><p class="tl-company">上海传之神科技 / OpenCSG</p></div></div>
+      <div class="tl-item"><span class="tl-year">2023</span><div><p class="tl-role">GTM</p><p class="tl-company">上海桥田智能设备</p></div></div>
+      <div class="tl-item"><span class="tl-year">2021—23</span><div><p class="tl-role">市场营销</p><p class="tl-company">上海悉息信息科技（工业软件）</p></div></div>
+      <div class="tl-item"><span class="tl-year">2020—21</span><div><p class="tl-role">高级技术支持</p><p class="tl-company">天津汉博科技（美团）</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-inner">
+    <h2 class="contact-title fi">开始<br><span>对话。</span></h2>
+    <div class="contact-links">
+      <a href="tel:17716164686" class="contact-link fi"><span class="cl-label">电话</span><span>1xxxxxxxxxx</span><span>→</span></a>
+      <a href="mailto:1426073988@qq.com" class="contact-link fi d1"><span class="cl-label">邮件</span><span>1xxxxxxxxxx@qq.com</span><span>→</span></a>
+      <a href="#" class="contact-link fi d2"><span class="cl-label">微信</span><span>1xxxxxxxxxx</span><span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="f-name">Echo · 市场负责人</span>
+  <span class="f-copy">© 2025</span>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
